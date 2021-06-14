@@ -12,13 +12,12 @@ class FruitController {
   }
 
   static postFruit(req, res, next) {
-    const { name, BeratTotal, HargaPerKg } = req.body
+    const { name, HargaTotal, BeratTotal } = req.body
 
     Fruit.create({
       name,
-
+      HargaTotal,
       BeratTotal,
-      HargaPerKg,
     })
       .then((data) => {
         res.status(201).json(data)
@@ -28,10 +27,11 @@ class FruitController {
 
   static putFruit(req, res, next) {
     let id = req.params.id
-    let { name, BeratTotal, HargaPerKg, HargaTotal } = req.body
+    let { name, BeratTotal, HargaTotal } = req.body
+    let HargaPerKg = HargaTotal / BeratTotal
 
     Fruit.update(
-      { name, BeratTotal, HargaPerKg, HargaTotal },
+      { name, BeratTotal, HargaTotal, HargaPerKg },
       {
         where: {
           id,
@@ -40,7 +40,7 @@ class FruitController {
       }
     )
       .then((data) => {
-        //console.log(data)
+        // console.log(data, ' di put')
         if (data[0] === 0) {
           next({ name: 'NotFound' })
         } else {
@@ -59,7 +59,7 @@ class FruitController {
       where: { id },
     })
       .then((data) => {
-        res.status(200).json({ message: 'Delete Task success' })
+        res.status(200).json({ message: 'Delete Fruit success' })
       })
       .catch((err) => {
         next(err)
