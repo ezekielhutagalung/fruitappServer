@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "name": "Apel",
+    "HargaTotal": 20000,
+    "BeratTotal": 10,
+    "HargaPerKg": 2000
+   
+  },
+  {
+    "id": 2,
+    "name": "Duren",
+    "HargaTotal": 20000,
+    "BeratTotal": 10,
+    "HargaPerKg": 2000
+  }
+]
