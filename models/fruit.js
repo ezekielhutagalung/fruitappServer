@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
       HargaTotal: DataTypes.INTEGER,
 
       BeratTotal: DataTypes.FLOAT,
-      HargaPerKg: DataTypes.INTEGER,
+      HargaPerKg: DataTypes.BIGINT,
     },
     {
       sequelize,
@@ -26,9 +26,10 @@ module.exports = (sequelize, DataTypes) => {
       hooks: {
         beforeCreate: (instance) => {
           instance.BeratTotal = instance.BeratTotal / 1000
-        },
-        beforeCreate: (instance) => {
-          instance.HargaPerKg = instance.HargaTotal / instance.BeratTotal
+
+          const BeratTotalTemp = instance.BeratTotal
+
+          instance.HargaPerKg = instance.HargaTotal / BeratTotalTemp
         },
       },
     }

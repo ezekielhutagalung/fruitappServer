@@ -18,7 +18,7 @@ module.exports = {
         type: Sequelize.FLOAT,
       },
       HargaPerKg: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.BIGINT,
       },
       createdAt: {
         allowNull: false,

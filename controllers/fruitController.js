@@ -52,6 +52,19 @@ class FruitController {
       })
   }
 
+  static getFruitId(req, res, next) {
+    let id = req.params.id
+
+    Fruit.findByPk(id)
+
+      .then((data) => {
+        res.status(200).json(data)
+      })
+      .catch((err) => {
+        next(err)
+      })
+  }
+
   static deleteFruit(req, res, next) {
     let id = req.params.id
 
